@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ColecaoVendas {
 
@@ -36,6 +37,37 @@ public class ColecaoVendas {
 		if (k == 0) {
 			System.out.println("O cliente não fez nenhuma compra");
 		}
+	}
+	
+	public void removerVenda(String num, Vendedor vend){
+		int k = 0;
+		Vendas v;
+		for (Iterator<Vendas> i = Vend.iterator(); i.hasNext();) {
+			v = i.next();
+			if (num.equals(v.getNumserie()) && vend.equals(v.getVend().getMatricula())) {
+				i.remove();
+				k++;
+			}
+		}
+		if (k == 0) {
+			System.out.println("Não foi feita essa venda");
+		}
+
+	}
+	public void removerCompra(String num, Cliente clien){
+		int k = 0;
+		Vendas v;
+		for (Iterator<Vendas> i = Vend.iterator(); i.hasNext();) {
+			v = i.next();
+			if (num.equals(v.getNumserie()) && clien.equals(v.getClient().getCPF())) {
+				i.remove();
+				k++;
+			}
+		}
+		if (k == 0) {
+			System.out.println("Não foi feita essa compra");
+		}
+
 	}
 
 }
