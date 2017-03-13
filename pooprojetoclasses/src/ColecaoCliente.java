@@ -57,7 +57,7 @@ public class ColecaoCliente {
 	            
 	        }
 	    }
-	 public Object carregarDados() {
+	 public ArrayList <Cliente> carregarDados() {
 		 ObjectInputStream in = null;
 		 try {
 		 	in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("cliente.dat")));
