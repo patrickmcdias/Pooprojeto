@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.io.*;
 import java.util.Iterator;
 
 public class ColecaoCliente {
@@ -39,8 +40,46 @@ public class ColecaoCliente {
 			}
 		}
 		if (k == 0) {
-			System.out.println("NÃ£o temos cliente com esse CPF");
+			System.out.println("NÃo temos cliente com esse CPF");
 		}
 
 	}
+	 public int salvarDados(ArrayList Cliente ){
+	        try{
+	            
+	            FileOutputStream arquivo = new FileOutputStream("cliente.dat"); //tanto faz o nome do arquivo
+	            ObjectOutputStream out = new ObjectOutputStream(arquivo);
+	            out.writeObject(Cliente); //referencia a estrutura que se quer armazenar
+	            out.close( );
+	            return 0;
+	        }catch(Exception ex){
+	            return -1;
+	            
+	        }
+	    }
+	 public Object carregarDados() {
+		 ObjectInputStream in = null;
+		 try {
+		 	in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("cliente.dat")));
+		 	Clien = new ArrayList<Cliente>();
+		 	Cliente c = new Cliente();
+		 	try {
+		 		while (true) {
+		 			try{
+		 				c=(Cliente)in.readObject();
+		 				Clien.add(c);
+		 			}
+		 			catch(EOFException e){
+		 				break;
+		 			}
+		 		}
+		 	} 
+		 	catch (IOException e){
+		 	}
+		 	return Clien;
+		 } 
+		 finally {
+		 	in.close();
+		 }
+	 }
 }
