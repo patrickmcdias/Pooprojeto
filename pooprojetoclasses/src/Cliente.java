@@ -1,5 +1,5 @@
-
-public class Cliente {
+import java.io.*;
+public class Cliente implements Serializable {
 
 	private String nome;
 	private String CPF;
