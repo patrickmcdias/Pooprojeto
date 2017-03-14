@@ -1,5 +1,5 @@
-
-public class Vendas {
+import java.io.*;
+public class Vendas implements Serializable {
 
 	private String modelo;
 	private String numserie;

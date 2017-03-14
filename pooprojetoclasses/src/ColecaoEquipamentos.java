@@ -1,3 +1,9 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -6,7 +12,7 @@ import java.util.Iterator;
  * @author Patrick Muller e Neudson José
  * 
  */
-public class ColecaoEquipamentos {
+public class ColecaoEquipamentos  {
 
 	private ArrayList<Equipamentos> Equip;
 
@@ -81,5 +87,40 @@ public class ColecaoEquipamentos {
 		}
 
 	}
+	public int salvarDados(ArrayList Equipamentos ){
+        try{
+            
+            FileOutputStream arquivo = new FileOutputStream("equipamentos.dat"); 
+            ObjectOutputStream out = new ObjectOutputStream(arquivo);
+            out.writeObject(Equipamentos);
+            out.close();
+            return 0;
+        }catch(Exception ex){
+            return -1;
+            
+        }
+    }
+	 public ArrayList <Equipamentos> carregarDados() {
+		 Equip = new ArrayList<Equipamentos>();
+		 try {
+		 	FileInputStream in= new FileInputStream ("equipamentos.dat");
+		 	ObjectInputStream objIn = new ObjectInputStream(in);
+		 	while (true) {
+		 	Equipamentos e = (Equipamentos) objIn.readObject();	
+		 	Equip.add(e);
+		 	objIn.close();
+		 	}
+		 }
+		 catch (FileNotFoundException e){
+			 e.printStackTrace();
+		 }
+		 catch (IOException e){
+			 e.printStackTrace();
+		 } catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 return Equip;
+	 }
 
 }

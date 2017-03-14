@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -44,5 +45,40 @@ public class ColecaoFuncionario {
 		}
 
 	}
+	public int salvarDados(ArrayList Func ){
+        try{
+            
+            FileOutputStream arquivo = new FileOutputStream("funcionario.dat"); 
+            ObjectOutputStream out = new ObjectOutputStream(arquivo);
+            out.writeObject(Func);
+            out.close();
+            return 0;
+        }catch(Exception ex){
+            return -1;
+            
+        }
+    }
+	 public ArrayList <Funcionario> carregarDados() {
+		 Func = new ArrayList<Funcionario>();
+		 try {
+		 	FileInputStream in= new FileInputStream ("funcionario.dat");
+		 	ObjectInputStream objIn = new ObjectInputStream(in);
+		 	while (true) {
+		 		Funcionario f = (Funcionario) objIn.readObject();	
+		 		Func.add(f);
+		 		objIn.close();
+		 	}
+		 }
+		 catch (FileNotFoundException e){
+			 e.printStackTrace();
+		 }
+		 catch (IOException e){
+			 e.printStackTrace();
+		 } catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 return Func;
+	 }
 
 }

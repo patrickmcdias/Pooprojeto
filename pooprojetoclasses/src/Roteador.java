@@ -1,3 +1,6 @@
+import java.io.Serializable;
+
+
 /**
  * 
  * @author Patrick Muller e Neudson José
@@ -8,7 +11,7 @@
  * 
  * Classe com nome Roteador que implementa a interface equipamentos
  */
-public class Roteador implements Equipamentos {
+public class Roteador implements Equipamentos,  Serializable {
 	private String modelo;
 	private String numserie;
 	private int qtdportasserial;

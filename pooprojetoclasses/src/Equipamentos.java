@@ -1,3 +1,6 @@
+import java.io.Serializable;
+
+import java.io.*;
 /**
  * 
  * @author Patrick Muller e Neudson José
@@ -9,7 +12,7 @@
  *
  */
 
-public interface Equipamentos {
+public interface Equipamentos extends Serializable{
 
 	public String getModelo();
 

@@ -47,9 +47,9 @@ public class ColecaoCliente {
 	 public int salvarDados(ArrayList Cliente ){
 	        try{
 	            
-	            FileOutputStream arquivo = new FileOutputStream("cliente.dat"); //tanto faz o nome do arquivo
+	            FileOutputStream arquivo = new FileOutputStream("cliente.dat"); 
 	            ObjectOutputStream out = new ObjectOutputStream(arquivo);
-	            out.writeObject(Cliente); //referencia a estrutura que se quer armazenar
+	            out.writeObject(Cliente);
 	            out.close( );
 	            return 0;
 	        }catch(Exception ex){
@@ -58,28 +58,25 @@ public class ColecaoCliente {
 	        }
 	    }
 	 public ArrayList <Cliente> carregarDados() {
-		 ObjectInputStream in = null;
+		 Clien = new ArrayList<Cliente>();
 		 try {
-		 	in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("cliente.dat")));
-		 	Clien = new ArrayList<Cliente>();
-		 	Cliente c = new Cliente();
-		 	try {
-		 		while (true) {
-		 			try{
-		 				c=(Cliente)in.readObject();
-		 				Clien.add(c);
-		 			}
-		 			catch(EOFException e){
-		 				break;
-		 			}
-		 		}
-		 	} 
-		 	catch (IOException e){
+		 	FileInputStream in= new FileInputStream ("cliente.dat");
+		 	ObjectInputStream objIn = new ObjectInputStream(in);
+		 	while (true) {
+		 		Cliente c = (Cliente) objIn.readObject();	
+		 		Clien.add(c);
+		 		objIn.close();
 		 	}
-		 	return Clien;
-		 } 
-		 finally {
-		 	in.close();
 		 }
+		 catch (FileNotFoundException e){
+			 e.printStackTrace();
+		 }
+		 catch (IOException e){
+			 e.printStackTrace();
+		 } catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 return Clien;
 	 }
 }

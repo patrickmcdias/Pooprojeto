@@ -1,4 +1,7 @@
-public class Funcionario {
+import java.io.*;
+
+
+public class Funcionario implements Serializable {
 
 	private String nome;
 	private String matricula;
