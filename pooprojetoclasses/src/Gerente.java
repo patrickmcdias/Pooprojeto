@@ -1,10 +1,18 @@
+/**
+ * 
+ * @author Patrick Muller e Neudson José
+ */
+/**
+ * Classe na qual tem o nome Gerente que vai herdar da Classe pai Funcionario
+ * 
+ */
 public class Gerente extends Funcionario {
 
 	private Double salario;
 
 	public Gerente(String nome, String matricula, Double salario) {
 		super(nome, matricula);
-		this.salario = super.getSalarioBase() * 2;
+		this.salario = super.getSalarioBase() * 3;
 	}
 
 	public Double getSalario() {

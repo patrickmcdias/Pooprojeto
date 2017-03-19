@@ -4,16 +4,37 @@ import java.util.Iterator;
 
 public class ColecaoFuncionario {
 
+	/**
+	 * 
+	 * @author Patrick Muller e Neudson José
+	 */
+
+	/**
+	 * Classe com o nome ColecaoFuncionario na qual coloca o objeto Funcionario
+	 * em um ArrayList
+	 */
 	private ArrayList<Funcionario> Func;
 
+	/**
+	 * Método que instância o atributo Func como ArrayList
+	 */
 	public ColecaoFuncionario() {
 		Func = new ArrayList<Funcionario>();
 	}
 
+	/**
+	 * 
+	 * Método que adiciona objetos do tipo Funcionario no ArrayList Func
+	 * */
 	public void adicionarFuncionario(Funcionario fu) {
 		this.Func.add(fu);
 	}
 
+	/**
+	 * 
+	 * Método que faz a pesquisa dentro do ArrayList Func pelo atributo
+	 * Matricula
+	 */
 	public Funcionario pesquisarPelaMatricula(String n) {
 		int k = 0;
 		Funcionario funcio = null;
@@ -30,6 +51,10 @@ public class ColecaoFuncionario {
 		return funcio;
 	}
 
+	/**
+	 * 
+	 * Método que remove do ArrayList Func pelo atributo Matricula
+	 */
 	public void removerPelaMatricula(String n) {
 		int k = 0;
 		Funcionario fu;
@@ -45,40 +70,48 @@ public class ColecaoFuncionario {
 		}
 
 	}
-	public int salvarDados(ArrayList Func ){
-        try{
-            
-            FileOutputStream arquivo = new FileOutputStream("funcionario.dat"); 
-            ObjectOutputStream out = new ObjectOutputStream(arquivo);
-            out.writeObject(Func);
-            out.close();
-            return 0;
-        }catch(Exception ex){
-            return -1;
-            
-        }
-    }
-	 public ArrayList <Funcionario> carregarDados() {
-		 Func = new ArrayList<Funcionario>();
-		 try {
-		 	FileInputStream in= new FileInputStream ("funcionario.dat");
-		 	ObjectInputStream objIn = new ObjectInputStream(in);
-		 	while (true) {
-		 		Funcionario f = (Funcionario) objIn.readObject();	
-		 		Func.add(f);
-		 		objIn.close();
-		 	}
-		 }
-		 catch (FileNotFoundException e){
-			 e.printStackTrace();
-		 }
-		 catch (IOException e){
-			 e.printStackTrace();
-		 } catch (ClassNotFoundException e) {
+
+	/**
+	 * 
+	 * Método que salva o ArrayList Func em um arquivo
+	 */
+	public int salvarDados(ArrayList Func) {
+		try {
+
+			FileOutputStream arquivo = new FileOutputStream("funcionario.dat");
+			ObjectOutputStream out = new ObjectOutputStream(arquivo);
+			out.writeObject(Func);
+			out.close();
+			return 0;
+		} catch (Exception ex) {
+			return -1;
+
+		}
+	}
+
+	/**
+	 * 
+	 * Método que carrega o arquivo com ArrayList Func
+	 */
+	public ArrayList<Funcionario> carregarDados() {
+		Func = new ArrayList<Funcionario>();
+		try {
+			FileInputStream in = new FileInputStream("funcionario.dat");
+			ObjectInputStream objIn = new ObjectInputStream(in);
+			while (true) {
+				Funcionario f = (Funcionario) objIn.readObject();
+				Func.add(f);
+				objIn.close();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 return Func;
-	 }
+		return Func;
+	}
 
 }

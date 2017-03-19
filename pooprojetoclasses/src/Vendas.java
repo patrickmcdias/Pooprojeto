@@ -1,4 +1,14 @@
 import java.io.*;
+
+/**
+ * 
+ * @author Patrick Muller e Neudson José
+ */
+/**
+ * Classe na qual tem o nome Vendas que utiliza atributos dos objetos Cliente,
+ * Vendedor e da interface Equipamentos
+ * 
+ */
 public class Vendas implements Serializable {
 
 	private String modelo;
@@ -10,7 +20,8 @@ public class Vendas implements Serializable {
 	public Vendas() {
 	}
 
-	public Vendas(String modelo, String numserie, Vendedor vend, Double valor, Cliente client) {
+	public Vendas(String modelo, String numserie, Vendedor vend, Double valor,
+			Cliente client) {
 		this.modelo = modelo;
 		this.vend = vend;
 		this.valor = valor;
@@ -59,8 +70,9 @@ public class Vendas implements Serializable {
 	}
 
 	public String toString() {
-		return "Vendas [Modelo= " + modelo + ", Número de série = " + numserie + ", Valor = " + valor + ", Vendedor = "
-				+ vend + ", Cliente = " + client + "]";
+		return "Vendas [Modelo= " + modelo + ", Número de série = " + numserie
+				+ ", Valor = " + valor + ", Vendedor = " + vend
+				+ ", Cliente = " + client + "]";
 	}
 
 	public boolean equals(Object obj) {

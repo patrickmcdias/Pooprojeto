@@ -1,13 +1,10 @@
 import java.io.Serializable;
+
 /**
  * 
  * @author Patrick Muller e Neudson José
- *
  */
-
-
 /**
- * 
  * Classe com o nome Switch que implementa a interface equipamentos
  */
 public class Switch implements Equipamentos, Serializable {

@@ -1,5 +1,14 @@
 import java.io.*;
 
+/**
+ * 
+ * @author Patrick Muller e Neudson José
+ * 
+ */
+ /**         Classe na qual tem o nome Funcionario que vai ser a Classe pai dos
+ *         obejtos Vendedor e Gerente
+ * 
+ */
 
 public class Funcionario implements Serializable {
 

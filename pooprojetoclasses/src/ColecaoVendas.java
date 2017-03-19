@@ -7,19 +7,40 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * 
+ * @author Patrick Muller e Neudson José
+ */
+
+/**
+ * Classe com o nome ColecaoVendas na qual coloca objetos do tipo Vendas em um
+ * ArrayList
+ */
 public class ColecaoVendas {
 
 	private ArrayList<Vendas> Vend;
 
+	/**
+	 * Método que instância o atributo Vend como ArrayList
+	 */
 	public ColecaoVendas() {
 		Vend = new ArrayList<Vendas>();
 	}
 
+	/**
+	 * 
+	 * Método que adiciona objetos do tipo Vendas no ArrayList Vend
+	 * */
 	public void adicionarVenda(Vendas ve) {
 		this.Vend.add(ve);
 	}
-	
-	public void pesquisarCompraDoCliente(String cpf){
+
+	/**
+	 * 
+	 * Método que faz a pesquisa dentro do ArrayList Vend pelo atributo CPF do
+	 * do objeto Cliente
+	 */
+	public void pesquisarCompraDoCliente(String cpf) {
 		int k = 0;
 		for (Vendas ve : Vend) {
 			if (ve.getClient().getCPF().equals(cpf)) {
@@ -31,8 +52,14 @@ public class ColecaoVendas {
 			System.out.println("O cliente não fez nenhuma compra");
 		}
 	}
-	
-	public void pesquisarVendaDoVendedor(String matri){
+
+	/**
+	 * 
+	 * Método que faz a pesquisa dentro do ArrayList Vend pelo atributo
+	 * Matricula do objeto Vendedor
+	 */
+
+	public void pesquisarVendaDoVendedor(String matri) {
 		int k = 0;
 		for (Vendas ve : Vend) {
 			if (ve.getVend().getMatricula().equals(matri)) {
@@ -44,13 +71,19 @@ public class ColecaoVendas {
 			System.out.println("O cliente não fez nenhuma compra");
 		}
 	}
-	
-	public void removerVenda(String num, Vendedor vend){
+
+	/**
+	 * 
+	 * Método que remove do ArrayList Vend pelo atributo NumSerie da interface
+	 * Equipamento e pelo atributo Matricula do objeto Vendedor
+	 */
+	public void removerVenda(String num, Vendedor vend) {
 		int k = 0;
 		Vendas v;
 		for (Iterator<Vendas> i = Vend.iterator(); i.hasNext();) {
 			v = i.next();
-			if (num.equals(v.getNumserie()) && vend.equals(v.getVend().getMatricula())) {
+			if (num.equals(v.getNumserie())
+					&& vend.equals(v.getVend().getMatricula())) {
 				i.remove();
 				k++;
 			}
@@ -60,12 +93,19 @@ public class ColecaoVendas {
 		}
 
 	}
-	public void removerCompra(String num, Cliente clien){
+
+	/**
+	 * 
+	 * Método que remove do ArrayList Vend pelo atributo NumSerie da interface
+	 * Equipamento e pelo atributo CPF do objeto Cliente
+	 */
+	public void removerCompra(String num, Cliente clien) {
 		int k = 0;
 		Vendas v;
 		for (Iterator<Vendas> i = Vend.iterator(); i.hasNext();) {
 			v = i.next();
-			if (num.equals(v.getNumserie()) && clien.equals(v.getClient().getCPF())) {
+			if (num.equals(v.getNumserie())
+					&& clien.equals(v.getClient().getCPF())) {
 				i.remove();
 				k++;
 			}
@@ -75,40 +115,48 @@ public class ColecaoVendas {
 		}
 
 	}
-	public int salvarDados(ArrayList Vend ){
-        try{
-            
-            FileOutputStream arquivo = new FileOutputStream("vendas.dat"); 
-            ObjectOutputStream out = new ObjectOutputStream(arquivo);
-            out.writeObject(Vend);
-            out.close();
-            return 0;
-        }catch(Exception ex){
-            return -1;
-            
-        }
-    }
-	 public ArrayList <Vendas> carregarDados() {
-		 Vend = new ArrayList<Vendas>();
-		 try {
-		 	FileInputStream in= new FileInputStream ("vendas.dat");
-		 	ObjectInputStream objIn = new ObjectInputStream(in);
-		 	while (true) {
-		 		Vendas v = (Vendas) objIn.readObject();	
-		 		Vend.add(v);
-		 		objIn.close();
-		 	}
-		 }
-		 catch (FileNotFoundException e){
-			 e.printStackTrace();
-		 }
-		 catch (IOException e){
-			 e.printStackTrace();
-		 } catch (ClassNotFoundException e) {
+
+	/**
+	 * 
+	 * Método que salva o ArrayList Vend em um arquivo
+	 */
+	public int salvarDados(ArrayList Vend) {
+		try {
+
+			FileOutputStream arquivo = new FileOutputStream("vendas.dat");
+			ObjectOutputStream out = new ObjectOutputStream(arquivo);
+			out.writeObject(Vend);
+			out.close();
+			return 0;
+		} catch (Exception ex) {
+			return -1;
+
+		}
+	}
+
+	/**
+	 * 
+	 * Método que carrega o arquivo com ArrayList Vend
+	 */
+	public ArrayList<Vendas> carregarDados() {
+		Vend = new ArrayList<Vendas>();
+		try {
+			FileInputStream in = new FileInputStream("vendas.dat");
+			ObjectInputStream objIn = new ObjectInputStream(in);
+			while (true) {
+				Vendas v = (Vendas) objIn.readObject();
+				Vend.add(v);
+				objIn.close();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 return Vend;
-	 }
+		return Vend;
+	}
 
 }
