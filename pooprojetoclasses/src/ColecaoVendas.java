@@ -120,19 +120,17 @@ public class ColecaoVendas {
 	 * 
 	 * Método que salva o ArrayList Vend em um arquivo
 	 */
-	public int salvarDados(ArrayList Vend) {
-		try {
-
-			FileOutputStream arquivo = new FileOutputStream("vendas.dat");
-			ObjectOutputStream out = new ObjectOutputStream(arquivo);
-			out.writeObject(Vend);
-			out.close();
-			return 0;
-		} catch (Exception ex) {
-			return -1;
-
-		}
-	}
+	public int salvarDados(){
+        try{
+        	ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("vendas.dat"));
+            out.writeObject(Vend);
+            out.close();
+            return 0;
+        }catch(IOException e){
+            return -1;
+            
+        }
+    }
 
 	/**
 	 * 
