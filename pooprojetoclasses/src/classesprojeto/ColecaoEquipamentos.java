@@ -22,7 +22,7 @@ public class ColecaoEquipamentos {
 	private ArrayList<Equipamentos> Equip;
 
 	/**
-	 * MÃ©todo que instÃ¢ncia o atributo Equip como ArrayList
+	 * Método que instancia o atributo Equip como ArrayList
 	 */
 	public ColecaoEquipamentos() {
 		Equip = new ArrayList<Equipamentos>();
@@ -30,7 +30,9 @@ public class ColecaoEquipamentos {
 
 	/**
 	 * 
-	 * MÃ©todo que adiciona objetos da interface Equipamento no ArrayList Equip
+	 * Método que adiciona objetos da interface Equipamento no ArrayList Equip
+	 * Recebe como parâmetro um objeto do tipo Equipamentos.
+	 * @param eq
 	 * */
 	public void adicionarEquipamento(Equipamentos eq) {
 		this.Equip.add(eq);
@@ -38,8 +40,10 @@ public class ColecaoEquipamentos {
 
 	/**
 	 * 
-	 * MÃ©todo que faz a pesquisa dentro do ArrayList Equip pelo atributo
-	 * NumSerie
+	 * Método que faz a pesquisa dentro do ArrayList Equip.
+	 * Recebe a String NumSerie correspondente ao número de série, compara,
+	 * e se encontra algum objeto correspondente exibe ele na tela.
+	 * @param n
 	 */
 	public void pesquisarPeloNumSerie(String n) {
 		int k = 0;
@@ -57,7 +61,10 @@ public class ColecaoEquipamentos {
 
 	/**
 	 * 
-	 * MÃ©todo que faz a pesquisa dentro do ArrayList Equip pelo atributo Modelo
+	 * Método que faz a pesquisa dentro do ArrayList Equip pelo atributo Modelo
+	 * Compara e conta quantos elementos daquele modelo existe. No final da 
+	 * execução exibe a quantidade de modelos correspondente ao parâmetro passado.
+	 * @param mod
 	 */
 	public void pesquisarPeloModelo(String mod) {
 		int k = 0;
@@ -78,7 +85,9 @@ public class ColecaoEquipamentos {
 
 	/**
 	 * 
-	 * MÃ©todo que remove do ArrayList Equip pelo atributo NumSerie
+	 * Método que remove do ArrayList Equip pelo atributo NumSerie.
+	 * Recebe o número de série que deseja remover do arraylist, e remove do array.
+	 * @param n
 	 */
 	public void removerPeloNumSerie(String n) {
 		int k = 0;
@@ -99,7 +108,9 @@ public class ColecaoEquipamentos {
 
 	/**
 	 * 
-	 * MÃ©todo que remove do ArrayList Equip pelo atributo Modelo
+	 * Método que remove do ArrayList Equip pelo atributo Modelo.
+	 * Recebe o modelo do equipamento como parâmetro e remove do arraylist.
+	 * @param m
 	 */
 	public void removerTodoModelo(String m) {
 		int k = 0;
@@ -119,7 +130,8 @@ public class ColecaoEquipamentos {
 
 	/**
 	 * 
-	 * MÃ©todo que salva o ArrayList Equip em um arquivo
+	 * Método que salva o ArrayList Equip em um arquivo.
+	 * Pega o arraylist da coleção, e salva em um arquivo .dat
 	 */
 	public int salvarDados(){
         try{
@@ -134,18 +146,20 @@ public class ColecaoEquipamentos {
 
 	/**
 	 * 
-	 * MÃ©todo que carrega o arquivo com ArrayList Equip
+	 * Método que carrega o arquivo com ArrayList Equip.
+	 * Através do arquivo .dat obtem-se o arraylist correspondente ao 
+	 * arquivo da coleção. Ao fim da execução retorna um arraylist,
+	 * do tipo Equipamentos.
+	 * @return Equip
 	 */
 	public ArrayList<Equipamentos> carregarDados() {
-		Equip = new ArrayList<Equipamentos>();
+		Equip = new ArrayList();
 		try {
 			FileInputStream in = new FileInputStream("equipamentos.dat");
-			ObjectInputStream objIn = new ObjectInputStream(in);
-			while (true) {
-				Equipamentos e = (Equipamentos) objIn.readObject();
-				Equip.add(e);
-				objIn.close();
-			}
+			ObjectInputStream objIn = new ObjectInputStream(in);	
+			Equip =(ArrayList) objIn.readObject();
+			objIn.close();
+			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

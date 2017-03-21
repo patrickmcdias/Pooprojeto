@@ -26,7 +26,9 @@ public class ColecaoFuncionario {
 
 	/**
 	 * 
-	 * MÃ©todo que adiciona objetos do tipo Funcionario no ArrayList Func
+	 * Método que adiciona objetos do tipo Funcionario no ArrayList Func
+	 * Recebe como parâmetro um objeto do tipo Funcionario e adiciona dentro do arraylist
+	 * @param fu
 	 * */
 	public void adicionarFuncionario(Funcionario fu) {
 		this.Func.add(fu);
@@ -34,8 +36,11 @@ public class ColecaoFuncionario {
 
 	/**
 	 * 
-	 * MÃ©todo que faz a pesquisa dentro do ArrayList Func pelo atributo
-	 * Matricula
+	 * Mé©todo que faz a pesquisa dentro do ArrayList Func pelo atributo
+	 * Matricula. Recebe como Parâmetro uma String com a matrícula do funcionário,
+	 * Pesquisa e informa se existe ou não no arraylist. 
+	 * @param n
+	 * @return funcio
 	 */
 	public Funcionario pesquisarPelaMatricula(String n) {
 		int k = 0;
@@ -55,7 +60,11 @@ public class ColecaoFuncionario {
 
 	/**
 	 * 
-	 * MÃ©todo que remove do ArrayList Func pelo atributo Matricula
+	 * Método que remove do ArrayList Func pelo atributo Matricula
+	 * Recebe como parâmetro uma String correspondente a matrícula,
+	 * ao fim de sua execução o arraylist esta decrementado desse
+	 * objeto.
+	 * @param n
 	 */
 	public void removerPelaMatricula(String n) {
 		int k = 0;
@@ -75,7 +84,8 @@ public class ColecaoFuncionario {
 
 	/**
 	 * 
-	 * MÃ©todo que salva o ArrayList Func em um arquivo
+	 * Método que salva o ArrayList Func em um arquivo
+	 * Pega o arraylist da coleção, e salva em um arquivo .dat
 	 */
 	public int salvarDados(){
         try{
@@ -90,18 +100,20 @@ public class ColecaoFuncionario {
 
 	/**
 	 * 
-	 * MÃ©todo que carrega o arquivo com ArrayList Func
+	 * Método que carrega o arquivo com ArrayList Func
+	 * Através do arquivo .dat obtem-se o arraylist correspondente ao 
+	 * arquivo da coleção. Ao fim da execução retorna um arraylist,
+	 * do tipo Funcionário.
+	 * @return Func
 	 */
 	public ArrayList<Funcionario> carregarDados() {
-		Func = new ArrayList<Funcionario>();
+		Func = new ArrayList();
 		try {
 			FileInputStream in = new FileInputStream("funcionario.dat");
 			ObjectInputStream objIn = new ObjectInputStream(in);
-			while (true) {
-				Funcionario f = (Funcionario) objIn.readObject();
-				Func.add(f);
-				objIn.close();
-			}
+			Func =(ArrayList) objIn.readObject();
+			objIn.close();
+			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

@@ -22,7 +22,7 @@ public class ColecaoVendas {
 	private ArrayList<Vendas> Vend;
 
 	/**
-	 * MÃ©todo que instÃ¢ncia o atributo Vend como ArrayList
+	 * Método que instÃ¢ncia o atributo Vend como ArrayList
 	 */
 	public ColecaoVendas() {
 		Vend = new ArrayList<Vendas>();
@@ -30,7 +30,8 @@ public class ColecaoVendas {
 
 	/**
 	 * 
-	 * MÃ©todo que adiciona objetos do tipo Vendas no ArrayList Vend
+	 * Método que adiciona objetos do tipo Vendas no ArrayList Vend
+	 * Recebe como parâmetro um objeto do tipo Vendas e adiciona dentro do arraylist
 	 * */
 	public void adicionarVenda(Vendas ve) {
 		this.Vend.add(ve);
@@ -38,8 +39,10 @@ public class ColecaoVendas {
 
 	/**
 	 * 
-	 * MÃ©todo que faz a pesquisa dentro do ArrayList Vend pelo atributo CPF do
-	 * do objeto Cliente
+	 * Método que faz a pesquisa dentro do ArrayList Vend pelo atributo CPF do
+	 * do objeto Cliente. 
+	 * No fim de sua execução informa quantas compras esse cliente possui.
+	 * @param cpf
 	 */
 	public void pesquisarCompraDoCliente(String cpf) {
 		int k = 0;
@@ -56,8 +59,10 @@ public class ColecaoVendas {
 
 	/**
 	 * 
-	 * MÃ©todo que faz a pesquisa dentro do ArrayList Vend pelo atributo
-	 * Matricula do objeto Vendedor
+	 * Método que faz a pesquisa dentro do ArrayList Vend pelo atributo
+	 * Matricula do objeto Vendedor.
+	 * Ao fim da execução informa quantas vendas o vendedor realizou.
+	 * @param matri
 	 */
 
 	public void pesquisarVendaDoVendedor(String matri) {
@@ -69,14 +74,17 @@ public class ColecaoVendas {
 			}
 		}
 		if (k == 0) {
-			System.out.println("O cliente nÃ£o fez nenhuma compra");
+			System.out.println("O vendedor não fez nenhuma venda");
 		}
 	}
 
 	/**
 	 * 
-	 * MÃ©todo que remove do ArrayList Vend pelo atributo NumSerie da interface
-	 * Equipamento e pelo atributo Matricula do objeto Vendedor
+	 * Método que remove do ArrayList Vend pelo atributo NumSerie da interface
+	 * Equipamento e pelo atributo Matricula do objeto Vendedor. Ao fim da execução,
+	 * o arraylist fica decrementado do objeto compatível.
+	 * @param num 
+	 * @param vend
 	 */
 	public void removerVenda(String num, Vendedor vend) {
 		int k = 0;
@@ -97,8 +105,11 @@ public class ColecaoVendas {
 
 	/**
 	 * 
-	 * MÃ©todo que remove do ArrayList Vend pelo atributo NumSerie da interface
-	 * Equipamento e pelo atributo CPF do objeto Cliente
+	 * Método que remove do ArrayList Vend pelo atributo NumSerie da interface
+	 * Equipamento e pelo atributo CPF do objeto Cliente. Ao fim da execução,
+	 * o arraylist fica decrementado do objeto compatível.
+	 * @param num
+	 * @param clien
 	 */
 	public void removerCompra(String num, Cliente clien) {
 		int k = 0;
@@ -119,7 +130,8 @@ public class ColecaoVendas {
 
 	/**
 	 * 
-	 * MÃ©todo que salva o ArrayList Vend em um arquivo
+	 * Método que salva o ArrayList Vend em um arquivo
+	 * Pega o arraylist da coleção, e salva em um arquivo .dat
 	 */
 	public int salvarDados(){
         try{
@@ -134,18 +146,20 @@ public class ColecaoVendas {
 
 	/**
 	 * 
-	 * MÃ©todo que carrega o arquivo com ArrayList Vend
+	 * Método que carrega o arquivo com ArrayList Vend
+	 * Através do arquivo .dat obtem-se o arraylist correspondente ao 
+	 * arquivo da coleção. Ao fim da execução retorna um arraylist,
+	 * do tipo Funcionário.
+	 * @return Vend
 	 */
 	public ArrayList<Vendas> carregarDados() {
-		Vend = new ArrayList<Vendas>();
+		Vend = new ArrayList();
 		try {
 			FileInputStream in = new FileInputStream("vendas.dat");
 			ObjectInputStream objIn = new ObjectInputStream(in);
-			while (true) {
-				Vendas v = (Vendas) objIn.readObject();
-				Vend.add(v);
-				objIn.close();
-			}
+			Vend =(ArrayList) objIn.readObject();
+			objIn.close();
+	
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

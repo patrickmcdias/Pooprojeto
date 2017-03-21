@@ -26,7 +26,9 @@ public class ColecaoCliente {
 
 	/**
 	 * 
-	 * MÃ©todo que adiciona o objeto Cliente no ArrayList Clien
+	 * Método que adiciona o objeto Cliente no ArrayList Clien
+	 * Recebe como parâmetro um objeto do tipo Cliente
+	 * @param c1
 	 * */
 	public void adicionarCliente(Cliente cl) {
 		this.Clien.add(cl);
@@ -34,8 +36,9 @@ public class ColecaoCliente {
 
 	/**
 	 * 
-	 * MÃ©todo que faz a pesquisa dentro do ArrayList Clien pelo atributo CPF do
-	 * objeto Cliente
+	 * Método que faz a pesquisa dentro do ArrayList Clien pelo atributo CPF do
+	 * Objeto Cliente e retorna se existe ou não o cliente no arraylist.
+	 * @param n
 	 */
 	public Cliente pesquisarPeloCPF(String n) {
 		int k = 0;
@@ -56,6 +59,9 @@ public class ColecaoCliente {
 	/**
 	 * 
 	 * MÃ©todo que remove do ArrayList Clien pelo atributo CPF do objeto Cliente
+	 * Recebe uma string correspondente ao CPF compara e remove. Ao fim da execução
+	 * a coleção esta decrementada do objeto correspondente.
+	 * @param n
 	 */
 
 	public void removerPeloCPF(String n) {
@@ -76,7 +82,8 @@ public class ColecaoCliente {
 
 	/**
 	 * 
-	 * MÃ©todo que que salva o ArrayList Clien do objeto Cliente em um arquivo
+	 * Método que que salva o ArrayList Clien do objeto Cliente em um arquivo.
+	 * Pega o arraylist da coleção, e salva em um arquivo .dat
 	 */
 
 	public int salvarDados(){
@@ -92,19 +99,21 @@ public class ColecaoCliente {
 
 	/**
 	 * 
-	 * MÃ©todo que carrega o arquivo com ArrayList Clien do objeto Cliente
+	 * Método que carrega o arquivo com ArrayList Clien do objeto Cliente.
+	 * Através do arquivo .dat obtem-se o arraylist correspondente ao 
+	 * arquivo da coleção. Ao fim da execução retorna um arraylist,
+	 * do tipo Equipamentos.
+	 * @return Clien
 	 */
 
 	public ArrayList<Cliente> carregarDados() {
-		Clien = new ArrayList<Cliente>();
+		Clien = new ArrayList();
 		try {
 			FileInputStream in = new FileInputStream("cliente.dat");
 			ObjectInputStream objIn = new ObjectInputStream(in);
-			while (true) {
-				Cliente c = (Cliente) objIn.readObject();
-				Clien.add(c);
-				objIn.close();
-			}
+			Clien =(ArrayList) objIn.readObject();
+			objIn.close();
+			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
