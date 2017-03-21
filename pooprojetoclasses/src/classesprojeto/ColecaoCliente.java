@@ -79,19 +79,16 @@ public class ColecaoCliente {
 	 * Método que que salva o ArrayList Clien do objeto Cliente em um arquivo
 	 */
 
-	public int salvarDados(ArrayList Cliente) {
-		try {
-
-			FileOutputStream arquivo = new FileOutputStream("cliente.dat");
-			ObjectOutputStream out = new ObjectOutputStream(arquivo);
-			out.writeObject(Cliente);
-			out.close();
-			return 0;
-		} catch (Exception ex) {
-			return -1;
-
-		}
+	public int salvarDados(){
+        try{
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("cliente.dat"));
+            out.writeObject(Clien);
+            out.close();
+            return 0;
+        }catch(IOException e){
+            return -1;
 	}
+}
 
 	/**
 	 * 

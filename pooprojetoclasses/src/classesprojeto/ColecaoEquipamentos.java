@@ -121,19 +121,16 @@ public class ColecaoEquipamentos {
 	 * 
 	 * Método que salva o ArrayList Equip em um arquivo
 	 */
-	public int salvarDados(ArrayList Equipamentos) {
-		try {
-
-			FileOutputStream arquivo = new FileOutputStream("equipamentos.dat");
-			ObjectOutputStream out = new ObjectOutputStream(arquivo);
-			out.writeObject(Equipamentos);
-			out.close();
-			return 0;
-		} catch (Exception ex) {
-			return -1;
-
-		}
+	public int salvarDados(){
+        try{
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("equipamentos.dat"));
+            out.writeObject(Equip);
+            out.close();
+            return 0;
+        }catch(IOException e){
+            return -1;
 	}
+}
 
 	/**
 	 * 

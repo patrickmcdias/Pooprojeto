@@ -77,19 +77,16 @@ public class ColecaoFuncionario {
 	 * 
 	 * Método que salva o ArrayList Func em um arquivo
 	 */
-	public int salvarDados(ArrayList Func) {
-		try {
-
-			FileOutputStream arquivo = new FileOutputStream("funcionario.dat");
-			ObjectOutputStream out = new ObjectOutputStream(arquivo);
-			out.writeObject(Func);
-			out.close();
-			return 0;
-		} catch (Exception ex) {
-			return -1;
-
-		}
+	public int salvarDados(){
+        try{
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("funcionario.dat"));
+            out.writeObject(Func);
+            out.close();
+            return 0;
+        }catch(IOException e){
+            return -1;
 	}
+}
 
 	/**
 	 * 
