@@ -1,18 +1,26 @@
 package classesprojeto;
+
 import java.io.*;
+
 /**
  * 
  * @author Patrick Muller e Neudson José
  *
  */
- /** Classe com o nome Cliente na qual irá ser utilizada 
- * para o cadastro de vários clientes na ColecaoCliente 
+/**
+ * Classe com o nome Cliente na qual irá ser utilizada para o cadastro de vários
+ * clientes na ColecaoCliente
  */
 
 public class Cliente implements Serializable {
 
 	private String nome;
 	private String CPF;
+
+	public Cliente(String nome, String cPF) {
+		this.nome = nome;
+		CPF = cPF;
+	}
 
 	public String getNome() {
 		return nome;
