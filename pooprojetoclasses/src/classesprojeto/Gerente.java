@@ -11,7 +11,7 @@ public class Gerente extends Funcionario {
 
 	private Double salario;
 
-	public Gerente(String nome, String matricula, Double salario) {
+	public Gerente(String nome, String matricula) {
 		super(nome, matricula);
 		this.salario = super.getSalarioBase() * 3;
 	}

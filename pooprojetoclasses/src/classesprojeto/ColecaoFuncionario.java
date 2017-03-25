@@ -26,8 +26,8 @@ public class ColecaoFuncionario {
 
 	/**
 	 * 
-	 * Método que adiciona objetos do tipo Funcionario no ArrayList Func
-	 * Recebe como parâmetro um objeto do tipo Funcionario e adiciona dentro do arraylist
+	 * Mï¿½todo que adiciona objetos do tipo Funcionario no ArrayList Func
+	 * Recebe como parï¿½metro um objeto do tipo Funcionario e adiciona dentro do arraylist
 	 * @param fu
 	 * */
 	public void adicionarFuncionario(Funcionario fu) {
@@ -36,9 +36,9 @@ public class ColecaoFuncionario {
 
 	/**
 	 * 
-	 * Mé©todo que faz a pesquisa dentro do ArrayList Func pelo atributo
-	 * Matricula. Recebe como Parâmetro uma String com a matrícula do funcionário,
-	 * Pesquisa e informa se existe ou não no arraylist. 
+	 * Mï¿½todo que faz a pesquisa dentro do ArrayList Func pelo atributo
+	 * Matricula. Recebe como Parï¿½metro uma String com a matrï¿½cula do funcionï¿½rio,
+	 * Pesquisa e informa se existe ou nï¿½o no arraylist. 
 	 * @param n
 	 * @return funcio
 	 */
@@ -60,9 +60,9 @@ public class ColecaoFuncionario {
 
 	/**
 	 * 
-	 * Método que remove do ArrayList Func pelo atributo Matricula
-	 * Recebe como parâmetro uma String correspondente a matrícula,
-	 * ao fim de sua execução o arraylist esta decrementado desse
+	 * Mï¿½todo que remove do ArrayList Func pelo atributo Matricula
+	 * Recebe como parï¿½metro uma String correspondente a matrï¿½cula,
+	 * ao fim de sua execuï¿½ï¿½o o arraylist esta decrementado desse
 	 * objeto.
 	 * @param n
 	 */
@@ -84,8 +84,8 @@ public class ColecaoFuncionario {
 
 	/**
 	 * 
-	 * Método que salva o ArrayList Func em um arquivo
-	 * Pega o arraylist da coleção, e salva em um arquivo .dat
+	 * Mï¿½todo que salva o ArrayList Func em um arquivo
+	 * Pega o arraylist da coleï¿½ï¿½o, e salva em um arquivo .dat
 	 */
 	public int salvarDados(){
         try{
@@ -100,10 +100,10 @@ public class ColecaoFuncionario {
 
 	/**
 	 * 
-	 * Método que carrega o arquivo com ArrayList Func
-	 * Através do arquivo .dat obtem-se o arraylist correspondente ao 
-	 * arquivo da coleção. Ao fim da execução retorna um arraylist,
-	 * do tipo Funcionário.
+	 * Mï¿½todo que carrega o arquivo com ArrayList Func
+	 * Atravï¿½s do arquivo .dat obtem-se o arraylist correspondente ao 
+	 * arquivo da coleï¿½ï¿½o. Ao fim da execuï¿½ï¿½o retorna um arraylist,
+	 * do tipo Funcionï¿½rio.
 	 * @return Func
 	 */
 	public ArrayList<Funcionario> carregarDados() {
@@ -119,7 +119,6 @@ public class ColecaoFuncionario {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return Func;

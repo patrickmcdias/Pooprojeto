@@ -1,4 +1,5 @@
 package classesprojeto;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -22,7 +23,7 @@ public class ColecaoVendas {
 	private ArrayList<Vendas> Vend;
 
 	/**
-	 * Método que instÃ¢ncia o atributo Vend como ArrayList
+	 * Mï¿½todo que instÃ¢ncia o atributo Vend como ArrayList
 	 */
 	public ColecaoVendas() {
 		Vend = new ArrayList<Vendas>();
@@ -30,8 +31,8 @@ public class ColecaoVendas {
 
 	/**
 	 * 
-	 * Método que adiciona objetos do tipo Vendas no ArrayList Vend
-	 * Recebe como parâmetro um objeto do tipo Vendas e adiciona dentro do arraylist
+	 * Mï¿½todo que adiciona objetos do tipo Vendas no ArrayList Vend Recebe como
+	 * parï¿½metro um objeto do tipo Vendas e adiciona dentro do arraylist
 	 * */
 	public void adicionarVenda(Vendas ve) {
 		this.Vend.add(ve);
@@ -39,16 +40,18 @@ public class ColecaoVendas {
 
 	/**
 	 * 
-	 * Método que faz a pesquisa dentro do ArrayList Vend pelo atributo CPF do
-	 * do objeto Cliente. 
-	 * No fim de sua execução informa quantas compras esse cliente possui.
+	 * Mï¿½todo que faz a pesquisa dentro do ArrayList Vend pelo atributo CPF do
+	 * do objeto Cliente. No fim de sua execuï¿½ï¿½o informa quantas compras esse
+	 * cliente possui.
+	 * 
 	 * @param cpf
 	 */
-	public void pesquisarCompraDoCliente(String cpf) {
+	public void pesquisarCompraDoCliente(String cpf, String num) {
 		int k = 0;
 		for (Vendas ve : Vend) {
-			if (ve.getClient().getCPF().equals(cpf)) {
-				System.out.println("Compra(s) " + ve.toString());
+			if (ve.getClient().getCPF().equals(cpf)
+					&& ve.getEquip().getNumSerie().equals(num)) {
+				System.out.println("Compra: " + ve.toString());
 				k++;
 			}
 		}
@@ -59,40 +62,43 @@ public class ColecaoVendas {
 
 	/**
 	 * 
-	 * Método que faz a pesquisa dentro do ArrayList Vend pelo atributo
-	 * Matricula do objeto Vendedor.
-	 * Ao fim da execução informa quantas vendas o vendedor realizou.
+	 * Mï¿½todo que faz a pesquisa dentro do ArrayList Vend pelo atributo
+	 * Matricula do objeto Vendedor. Ao fim da execuï¿½ï¿½o informa quantas vendas o
+	 * vendedor realizou.
+	 * 
 	 * @param matri
 	 */
 
-	public void pesquisarVendaDoVendedor(String matri) {
+	public void pesquisarVendaDoVendedor(String matri, String num) {
 		int k = 0;
 		for (Vendas ve : Vend) {
-			if (ve.getVend().getMatricula().equals(matri)) {
-				System.out.println("Venda(s) " + ve.toString());
+			if (ve.getVend().getMatricula().equals(matri)
+					&& ve.getEquip().getNumSerie().equals(num)) {
+				System.out.println(ve.toString());
 				k++;
 			}
 		}
 		if (k == 0) {
-			System.out.println("O vendedor não fez nenhuma venda");
+			System.out.println("O vendedor nï¿½o fez nenhuma venda");
 		}
 	}
 
 	/**
 	 * 
-	 * Método que remove do ArrayList Vend pelo atributo NumSerie da interface
-	 * Equipamento e pelo atributo Matricula do objeto Vendedor. Ao fim da execução,
-	 * o arraylist fica decrementado do objeto compatível.
-	 * @param num 
+	 * Mï¿½todo que remove do ArrayList Vend pelo atributo NumSerie da interface
+	 * Equipamento e pelo atributo Matricula do objeto Vendedor. Ao fim da
+	 * execuï¿½ï¿½o, o arraylist fica decrementado do objeto compatï¿½vel.
+	 * 
+	 * @param num
 	 * @param vend
 	 */
-	public void removerVenda(String num, Vendedor vend) {
+	public void removerVenda(String num, String ve) {
 		int k = 0;
 		Vendas v;
 		for (Iterator<Vendas> i = Vend.iterator(); i.hasNext();) {
 			v = i.next();
-			if (num.equals(v.getNumserie())
-					&& vend.equals(v.getVend().getMatricula())) {
+			if (num.equals(v.getEquip().getNumSerie())
+					&& ve.equals(v.getVend().getMatricula())) {
 				i.remove();
 				k++;
 			}
@@ -105,19 +111,20 @@ public class ColecaoVendas {
 
 	/**
 	 * 
-	 * Método que remove do ArrayList Vend pelo atributo NumSerie da interface
-	 * Equipamento e pelo atributo CPF do objeto Cliente. Ao fim da execução,
-	 * o arraylist fica decrementado do objeto compatível.
+	 * Mï¿½todo que remove do ArrayList Vend pelo atributo NumSerie da interface
+	 * Equipamento e pelo atributo CPF do objeto Cliente. Ao fim da execuï¿½ï¿½o, o
+	 * arraylist fica decrementado do objeto compatï¿½vel.
+	 * 
 	 * @param num
 	 * @param clien
 	 */
-	public void removerCompra(String num, Cliente clien) {
+	public void removerCompra(String num, String cl) {
 		int k = 0;
 		Vendas v;
 		for (Iterator<Vendas> i = Vend.iterator(); i.hasNext();) {
 			v = i.next();
-			if (num.equals(v.getNumserie())
-					&& clien.equals(v.getClient().getCPF())) {
+			if (num.equals(v.getEquip().getNumSerie())
+					&& cl.equals(v.getClient().getCPF())) {
 				i.remove();
 				k++;
 			}
@@ -130,26 +137,27 @@ public class ColecaoVendas {
 
 	/**
 	 * 
-	 * Método que salva o ArrayList Vend em um arquivo
-	 * Pega o arraylist da coleção, e salva em um arquivo .dat
+	 * Mï¿½todo que salva o ArrayList Vend em um arquivo Pega o arraylist da
+	 * coleï¿½ï¿½o, e salva em um arquivo .dat
 	 */
-	public int salvarDados(){
-        try{
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("vendas.dat"));
-            out.writeObject(Vend);
-            out.close();
-            return 0;
-        }catch(IOException e){
-            return -1;
+	public int salvarDados() {
+		try {
+			ObjectOutputStream out = new ObjectOutputStream(
+					new FileOutputStream("vendas.dat"));
+			out.writeObject(Vend);
+			out.close();
+			return 0;
+		} catch (IOException e) {
+			return -1;
+		}
 	}
-}
 
 	/**
 	 * 
-	 * Método que carrega o arquivo com ArrayList Vend
-	 * Através do arquivo .dat obtem-se o arraylist correspondente ao 
-	 * arquivo da coleção. Ao fim da execução retorna um arraylist,
-	 * do tipo Funcionário.
+	 * Mï¿½todo que carrega o arquivo com ArrayList Vend Atravï¿½s do arquivo .dat
+	 * obtem-se o arraylist correspondente ao arquivo da coleï¿½ï¿½o. Ao fim da
+	 * execuï¿½ï¿½o retorna um arraylist, do tipo Funcionï¿½rio.
+	 * 
 	 * @return Vend
 	 */
 	public ArrayList<Vendas> carregarDados() {
@@ -157,15 +165,14 @@ public class ColecaoVendas {
 		try {
 			FileInputStream in = new FileInputStream("vendas.dat");
 			ObjectInputStream objIn = new ObjectInputStream(in);
-			Vend =(ArrayList) objIn.readObject();
+			Vend = (ArrayList) objIn.readObject();
 			objIn.close();
-	
+
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return Vend;

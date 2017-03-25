@@ -1,4 +1,5 @@
 package classesprojeto;
+
 import java.io.*;
 
 /**
@@ -13,30 +14,28 @@ import java.io.*;
 
 public class Vendas implements Serializable {
 
-	private String modelo;
-	private String numserie;
-	private Double valor;
-	private Vendedor vend;
+	private Equipamentos equip;
+	private double valor;
+	private Funcionario vend;
 	private Cliente client;
 
 	public Vendas() {
 	}
 
-	public Vendas(String modelo, String numserie, Vendedor vend, Double valor,
+	public Vendas(Equipamentos equip, Funcionario vend, double valor,
 			Cliente client) {
-		this.modelo = modelo;
+		this.equip = equip;
 		this.vend = vend;
 		this.valor = valor;
 		this.client = client;
-		this.numserie = numserie;
 	}
 
-	public String getNumserie() {
-		return numserie;
+	public Equipamentos getEquip() {
+		return equip;
 	}
 
-	public void setNumserie(String numserie) {
-		this.numserie = numserie;
+	public void setEquip(Equipamentos equip) {
+		this.equip = equip;
 	}
 
 	public Cliente getClient() {
@@ -55,15 +54,7 @@ public class Vendas implements Serializable {
 		this.valor = valor;
 	}
 
-	public String getModelo() {
-		return modelo;
-	}
-
-	public void setModelo(String modelo) {
-		this.modelo = modelo;
-	}
-
-	public Vendedor getVend() {
+	public Funcionario getVend() {
 		return vend;
 	}
 
@@ -72,9 +63,8 @@ public class Vendas implements Serializable {
 	}
 
 	public String toString() {
-		return "Vendas [Modelo= " + modelo + ", Número de série = " + numserie
-				+ ", Valor = " + valor + ", Vendedor = " + vend
-				+ ", Cliente = " + client + "]";
+		return "Venda [Equipameto = " + equip.toString() + ", Valor= " + valor
+				+ vend.toString() + client.toString() + "]";
 	}
 
 	public boolean equals(Object obj) {
@@ -90,20 +80,13 @@ public class Vendas implements Serializable {
 				return false;
 		} else if (!client.equals(other.client))
 			return false;
-		if (modelo == null) {
-			if (other.modelo != null)
+		if (equip == null) {
+			if (other.equip != null)
 				return false;
-		} else if (!modelo.equals(other.modelo))
+		} else if (!equip.equals(other.equip))
 			return false;
-		if (numserie == null) {
-			if (other.numserie != null)
-				return false;
-		} else if (!numserie.equals(other.numserie))
-			return false;
-		if (valor == null) {
-			if (other.valor != null)
-				return false;
-		} else if (!valor.equals(other.valor))
+		if (Double.doubleToLongBits(valor) != Double
+				.doubleToLongBits(other.valor))
 			return false;
 		if (vend == null) {
 			if (other.vend != null)

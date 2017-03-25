@@ -1,4 +1,5 @@
 package classesprojeto;
+
 import java.util.ArrayList;
 import java.io.*;
 import java.util.Iterator;
@@ -26,8 +27,9 @@ public class ColecaoCliente {
 
 	/**
 	 * 
-	 * Método que adiciona o objeto Cliente no ArrayList Clien
-	 * Recebe como parâmetro um objeto do tipo Cliente
+	 * Mï¿½todo que adiciona o objeto Cliente no ArrayList Clien Recebe como
+	 * parï¿½metro um objeto do tipo Cliente
+	 * 
 	 * @param c1
 	 * */
 	public void adicionarCliente(Cliente cl) {
@@ -36,8 +38,9 @@ public class ColecaoCliente {
 
 	/**
 	 * 
-	 * Método que faz a pesquisa dentro do ArrayList Clien pelo atributo CPF do
-	 * Objeto Cliente e retorna se existe ou não o cliente no arraylist.
+	 * Mï¿½todo que faz a pesquisa dentro do ArrayList Clien pelo atributo CPF do
+	 * Objeto Cliente e retorna se existe ou nï¿½o o cliente no arraylist.
+	 * 
 	 * @param n
 	 */
 	public Cliente pesquisarPeloCPF(String n) {
@@ -45,7 +48,7 @@ public class ColecaoCliente {
 		Cliente cl = null;
 		for (Cliente cli : Clien) {
 			if (cli.getCPF().equals(n)) {
-				System.out.println("Cliente: " + cli.toString());
+				System.out.println(cli.toString());
 				cl = cli;
 				k++;
 			}
@@ -59,8 +62,9 @@ public class ColecaoCliente {
 	/**
 	 * 
 	 * MÃ©todo que remove do ArrayList Clien pelo atributo CPF do objeto Cliente
-	 * Recebe uma string correspondente ao CPF compara e remove. Ao fim da execução
-	 * a coleção esta decrementada do objeto correspondente.
+	 * Recebe uma string correspondente ao CPF compara e remove. Ao fim da
+	 * execuï¿½ï¿½o a coleï¿½ï¿½o esta decrementada do objeto correspondente.
+	 * 
 	 * @param n
 	 */
 
@@ -82,27 +86,28 @@ public class ColecaoCliente {
 
 	/**
 	 * 
-	 * Método que que salva o ArrayList Clien do objeto Cliente em um arquivo.
-	 * Pega o arraylist da coleção, e salva em um arquivo .dat
+	 * Mï¿½todo que que salva o ArrayList Clien do objeto Cliente em um arquivo.
+	 * Pega o arraylist da coleï¿½ï¿½o, e salva em um arquivo .dat
 	 */
 
-	public int salvarDados(){
-        try{
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("cliente.dat"));
-            out.writeObject(Clien);
-            out.close();
-            return 0;
-        }catch(IOException e){
-            return -1;
+	public int salvarDados() {
+		try {
+			ObjectOutputStream out = new ObjectOutputStream(
+					new FileOutputStream("cliente.dat"));
+			out.writeObject(Clien);
+			out.close();
+			return 0;
+		} catch (IOException e) {
+			return -1;
+		}
 	}
-}
 
 	/**
 	 * 
-	 * Método que carrega o arquivo com ArrayList Clien do objeto Cliente.
-	 * Através do arquivo .dat obtem-se o arraylist correspondente ao 
-	 * arquivo da coleção. Ao fim da execução retorna um arraylist,
-	 * do tipo Equipamentos.
+	 * Mï¿½todo que carrega o arquivo com ArrayList Clien do objeto Cliente.
+	 * Atravï¿½s do arquivo .dat obtem-se o arraylist correspondente ao arquivo da
+	 * coleï¿½ï¿½o. Ao fim da execuï¿½ï¿½o retorna um arraylist, do tipo Equipamentos.
+	 * 
 	 * @return Clien
 	 */
 
@@ -111,15 +116,14 @@ public class ColecaoCliente {
 		try {
 			FileInputStream in = new FileInputStream("cliente.dat");
 			ObjectInputStream objIn = new ObjectInputStream(in);
-			Clien =(ArrayList) objIn.readObject();
+			Clien = (ArrayList) objIn.readObject();
 			objIn.close();
-			
+
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return Clien;

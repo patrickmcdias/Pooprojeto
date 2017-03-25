@@ -56,9 +56,9 @@ public class AccessPoint implements Equipamentos {
 	}
 
 	public String toString() {
-		return "AccessPoint [Modelo=" + modelo + ", Númeor de série="
-				+ numserie + ", Quantidade de portas=" + qtdportas
-				+ ", Quantidade de antenas=" + qtdantenas + "]";
+		return "AccessPoint [Modelo= " + modelo + ", Número de série= "
+				+ numserie + ", Quantidade de portas= " + qtdportas
+				+ ", Quantidade de antenas= " + qtdantenas + "]";
 	}
 
 	public boolean equals(Object obj) {
