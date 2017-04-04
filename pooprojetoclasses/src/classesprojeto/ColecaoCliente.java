@@ -27,8 +27,8 @@ public class ColecaoCliente {
 
 	/**
 	 * 
-	 * M�todo que adiciona o objeto Cliente no ArrayList Clien Recebe como
-	 * par�metro um objeto do tipo Cliente
+	 * Método que adiciona o objeto Cliente no ArrayList Clien Recebe como
+	 * parâmetro um objeto do tipo Cliente
 	 * 
 	 * @param c1
 	 * */
@@ -38,8 +38,8 @@ public class ColecaoCliente {
 
 	/**
 	 * 
-	 * M�todo que faz a pesquisa dentro do ArrayList Clien pelo atributo CPF do
-	 * Objeto Cliente e retorna se existe ou n�o o cliente no arraylist.
+	 * Método que faz a pesquisa dentro do ArrayList Clien pelo atributo CPF do
+	 * Objeto Cliente e retorna se existe ou não o cliente no arraylist.
 	 * 
 	 * @param n
 	 */
@@ -63,7 +63,7 @@ public class ColecaoCliente {
 	 * 
 	 * Método que remove do ArrayList Clien pelo atributo CPF do objeto Cliente
 	 * Recebe uma string correspondente ao CPF compara e remove. Ao fim da
-	 * execu��o a cole��o esta decrementada do objeto correspondente.
+	 * execução a coleção esta decrementada do objeto correspondente.
 	 * 
 	 * @param n
 	 */
@@ -86,8 +86,8 @@ public class ColecaoCliente {
 
 	/**
 	 * 
-	 * M�todo que que salva o ArrayList Clien do objeto Cliente em um arquivo.
-	 * Pega o arraylist da cole��o, e salva em um arquivo .dat
+	 * Método que que salva o ArrayList Clien do objeto Cliente em um arquivo.
+	 * Pega o arraylist da coleção, e salva em um arquivo .dat
 	 */
 
 	public int salvarDados() {
@@ -104,9 +104,9 @@ public class ColecaoCliente {
 
 	/**
 	 * 
-	 * M�todo que carrega o arquivo com ArrayList Clien do objeto Cliente.
-	 * Atrav�s do arquivo .dat obtem-se o arraylist correspondente ao arquivo da
-	 * cole��o. Ao fim da execu��o retorna um arraylist, do tipo Equipamentos.
+	 * Método que carrega o arquivo com ArrayList Clien do objeto Cliente.
+	 * Através do arquivo .dat obtem-se o arraylist correspondente ao arquivo da
+	 * coleção. Ao fim da execução retorna um arraylist, do tipo Equipamentos.
 	 * 
 	 * @return Clien
 	 */

@@ -23,7 +23,7 @@ public class ColecaoVendas {
 	private ArrayList<Vendas> Vend;
 
 	/**
-	 * M�todo que instância o atributo Vend como ArrayList
+	 * Método que instância o atributo Vend como ArrayList
 	 */
 	public ColecaoVendas() {
 		Vend = new ArrayList<Vendas>();
@@ -31,8 +31,8 @@ public class ColecaoVendas {
 
 	/**
 	 * 
-	 * M�todo que adiciona objetos do tipo Vendas no ArrayList Vend Recebe como
-	 * par�metro um objeto do tipo Vendas e adiciona dentro do arraylist
+	 * Método que adiciona objetos do tipo Vendas no ArrayList Vend Recebe como
+	 * parâmetro um objeto do tipo Vendas e adiciona dentro do arraylist
 	 * */
 	public void adicionarVenda(Vendas ve) {
 		this.Vend.add(ve);
@@ -40,8 +40,8 @@ public class ColecaoVendas {
 
 	/**
 	 * 
-	 * M�todo que faz a pesquisa dentro do ArrayList Vend pelo atributo CPF do
-	 * do objeto Cliente. No fim de sua execu��o informa quantas compras esse
+	 * Método que faz a pesquisa dentro do ArrayList Vend pelo atributo CPF do
+	 * do objeto Cliente. No fim de sua execução informa quantas compras esse
 	 * cliente possui.
 	 * 
 	 * @param cpf
@@ -62,8 +62,8 @@ public class ColecaoVendas {
 
 	/**
 	 * 
-	 * M�todo que faz a pesquisa dentro do ArrayList Vend pelo atributo
-	 * Matricula do objeto Vendedor. Ao fim da execu��o informa quantas vendas o
+	 * Método que faz a pesquisa dentro do ArrayList Vend pelo atributo
+	 * Matricula do objeto Vendedor. Ao fim da execução informa quantas vendas o
 	 * vendedor realizou.
 	 * 
 	 * @param matri
@@ -85,9 +85,9 @@ public class ColecaoVendas {
 
 	/**
 	 * 
-	 * M�todo que remove do ArrayList Vend pelo atributo NumSerie da interface
+	 * Método que remove do ArrayList Vend pelo atributo NumSerie da interface
 	 * Equipamento e pelo atributo Matricula do objeto Vendedor. Ao fim da
-	 * execu��o, o arraylist fica decrementado do objeto compat�vel.
+	 * execução, o arraylist fica decrementado do objeto compatível.
 	 * 
 	 * @param num
 	 * @param vend
@@ -111,9 +111,9 @@ public class ColecaoVendas {
 
 	/**
 	 * 
-	 * M�todo que remove do ArrayList Vend pelo atributo NumSerie da interface
-	 * Equipamento e pelo atributo CPF do objeto Cliente. Ao fim da execu��o, o
-	 * arraylist fica decrementado do objeto compat�vel.
+	 * Método que remove do ArrayList Vend pelo atributo NumSerie da interface
+	 * Equipamento e pelo atributo CPF do objeto Cliente. Ao fim da execução, o
+	 * arraylist fica decrementado do objeto compatível.
 	 * 
 	 * @param num
 	 * @param clien
@@ -137,8 +137,8 @@ public class ColecaoVendas {
 
 	/**
 	 * 
-	 * M�todo que salva o ArrayList Vend em um arquivo Pega o arraylist da
-	 * cole��o, e salva em um arquivo .dat
+	 * Método que salva o ArrayList Vend em um arquivo Pega o arraylist da
+	 * coleção, e salva em um arquivo .dat
 	 */
 	public int salvarDados() {
 		try {
@@ -154,9 +154,9 @@ public class ColecaoVendas {
 
 	/**
 	 * 
-	 * M�todo que carrega o arquivo com ArrayList Vend Atrav�s do arquivo .dat
-	 * obtem-se o arraylist correspondente ao arquivo da cole��o. Ao fim da
-	 * execu��o retorna um arraylist, do tipo Funcion�rio.
+	 * Método que carrega o arquivo com ArrayList Vend Através do arquivo .dat
+	 * obtem-se o arraylist correspondente ao arquivo da coleção. Ao fim da
+	 * execução retorna um arraylist, do tipo Funcionário.
 	 * 
 	 * @return Vend
 	 */

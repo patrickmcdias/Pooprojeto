@@ -1,9 +1,23 @@
 package main;
 
+import java.net.*;
+import java.io.*;
 import java.util.Scanner;
 
 import classesprojeto.*;
 
+/**
+ * 
+ * @author Patrick Muller e Neudson José 
+ *
+ */
+
+/**
+ * 
+ * Classe main do projeto herda todas as classes que estão dentro do pacote
+ * classesprojeto
+ * 
+ */
 public class MainProjeto {
 
 	public static void main(String[] args) {
@@ -13,14 +27,13 @@ public class MainProjeto {
 		ColecaoCliente cli = new ColecaoCliente();
 		ColecaoEquipamentos equi = new ColecaoEquipamentos();
 
-		// ven.carregarDados();
-		// fun.carregarDados();
-		// cli.carregarDados();
-		// equi.carregarDados();
+		ven.carregarDados();
+		fun.carregarDados();
+		cli.carregarDados();
+		equi.carregarDados();
 		int op = 0, op2 = 0, op3 = 0, op4 = 0;
 		Scanner io = new Scanner(System.in);
 		do {
-			// io.next();
 			System.out.println("------------Menu Principal------------");
 			System.out.println(" 1 - Ir menu dos clientes");
 			System.out.println(" 2 - Ir menu dos funcionários");
@@ -30,7 +43,7 @@ public class MainProjeto {
 			System.out.println("Digite a opção desejada: ");
 			op = io.nextInt();
 			switch (op) {
-			case 1:
+			case 1://Cliente
 				System.out.println("------------Menu Cliente------------");
 				System.out.println(" 1 - Cadastrar cliente");
 				System.out.println(" 2 - Pesquisar cliente pelo CPF");
@@ -40,7 +53,7 @@ public class MainProjeto {
 				System.out.println("Digite a opção desejada: ");
 				op2 = io.nextInt();
 				switch (op2) {
-				case 1:
+				case 1://Adicionar cliente
 					String n,
 					c;
 					Scanner clien = new Scanner(System.in);
@@ -52,7 +65,7 @@ public class MainProjeto {
 					Cliente cl = new Cliente(n, c);
 					cli.adicionarCliente(cl);
 					break;
-				case 2:
+				case 2://Pesquisar cliente
 					Scanner clien2 = new Scanner(System.in);
 					String qw;
 					System.out
@@ -60,7 +73,7 @@ public class MainProjeto {
 					qw = clien2.nextLine();
 					cli.pesquisarPeloCPF(qw);
 					break;
-				case 3:
+				case 3://Remover cliente 
 					Scanner clien3 = new Scanner(System.in);
 					String qy;
 					System.out
@@ -68,10 +81,34 @@ public class MainProjeto {
 					qy = clien3.nextLine();
 					cli.pesquisarPeloCPF(qy);
 					break;
-				case 4:
+				case 4://Salvar no arquivo
 					cli.salvarDados();
 					break;
-				case 5:
+				case 5://Fazer backup no servidor
+					File fi = new File("cliente.dat");
+					try {
+						Socket so = new Socket("10.0.4.223", 1515);
+						ObjectOutputStream out = new ObjectOutputStream(
+								so.getOutputStream());
+						out.writeUTF(fi.getName());
+						FileInputStream in = new FileInputStream(fi);
+						byte[] b = new byte[8192];
+						while (true) {
+							int l = in.read(b);
+							if (l == -1)
+								break;
+							out.write(b, 0, l);
+						}
+						out.close();
+						so.close();
+						in.close();
+						System.out.println("Feito!!");
+					} catch (UnknownHostException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+
 					break;
 				}
 				break;
@@ -85,12 +122,12 @@ public class MainProjeto {
 				System.out.println("Digite a opção desejada: ");
 				op3 = io.nextInt();
 				switch (op3) {
-				case 1:
+				case 1://Adicionar Funcionario
 					String m,
 					d,
 					ca;
 					Scanner func = new Scanner(System.in);
-					System.out.println(" Digite o nome do Funcionário: ");
+					System.out.println(" Digite o nome do funcionário: ");
 					m = func.nextLine();
 					// clien.nextLine();
 					System.out.println(" Digite a matrícula: ");
@@ -106,7 +143,7 @@ public class MainProjeto {
 						fun.adicionarFuncionario(v);
 					}
 					break;
-				case 2:
+				case 2://Pesquisar funcionario
 					Scanner func2 = new Scanner(System.in);
 					String tu;
 					System.out
@@ -114,7 +151,7 @@ public class MainProjeto {
 					tu = func2.nextLine();
 					fun.pesquisarPelaMatricula(tu);
 					break;
-				case 3:
+				case 3://Remover funcionario
 					Scanner func3 = new Scanner(System.in);
 					String lo;
 					System.out
@@ -122,10 +159,34 @@ public class MainProjeto {
 					lo = func3.nextLine();
 					fun.removerPelaMatricula(lo);
 					break;
-				case 4:
+				case 4://Salvar no arquivo 
 					fun.salvarDados();
 					break;
-				case 5:
+				case 5://Salvar backup no servidor
+					File fi = new File("funcionario.dat");
+					try {
+						Socket so = new Socket("10.0.4.223", 1515);
+						ObjectOutputStream out = new ObjectOutputStream(
+								so.getOutputStream());
+						out.writeUTF(fi.getName());
+						FileInputStream in = new FileInputStream(fi);
+						byte[] b = new byte[8192];
+						while (true) {
+							int l = in.read(b);
+							if (l == -1)
+								break;
+							out.write(b, 0, l);
+						}
+						out.close();
+						so.close();
+						in.close();
+						System.out.println("Feito!!");
+					} catch (UnknownHostException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					break;
 				}
 				break;
 			case 3:
@@ -143,7 +204,7 @@ public class MainProjeto {
 				System.out.println("Digite a opção desejada: ");
 				op3 = io.nextInt();
 				switch (op3) {
-				case 1:
+				case 1://Adicionar equipamento 
 					String po,
 					hy,
 					iu;
@@ -180,7 +241,7 @@ public class MainProjeto {
 						equi.adicionarEquipamento(ap);
 					}
 					break;
-				case 2:
+				case 2://Pesquisar pelo numero de serie 
 					Scanner equi2 = new Scanner(System.in);
 					String ti;
 					System.out
@@ -188,7 +249,7 @@ public class MainProjeto {
 					ti = equi2.nextLine();
 					equi.pesquisarPeloNumSerie(ti);
 					break;
-				case 3:
+				case 3://Pesquisar pelo modelo 
 					Scanner equi3 = new Scanner(System.in);
 					String to;
 					System.out
@@ -196,7 +257,7 @@ public class MainProjeto {
 					to = equi3.nextLine();
 					equi.pesquisarPeloModelo(to);
 					break;
-				case 4:
+				case 4://Remover pelo numero de serie 
 					Scanner equi4 = new Scanner(System.in);
 					String li;
 					System.out
@@ -204,7 +265,7 @@ public class MainProjeto {
 					li = equi4.nextLine();
 					equi.removerPeloNumSerie(li);
 					break;
-				case 5:
+				case 5://Remover pelo modelo
 					Scanner equi5 = new Scanner(System.in);
 					String lu;
 					System.out
@@ -212,10 +273,34 @@ public class MainProjeto {
 					lu = equi5.nextLine();
 					equi.removerTodoModelo(lu);
 					break;
-				case 6:
+				case 6://Salvar no arquivo
 					equi.salvarDados();
 					break;
-				case 7:
+				case 7://Salvar backup no servidor 
+					File fi = new File("equipamentos.dat");
+					try {
+						Socket so = new Socket("10.0.4.223", 1515);
+						ObjectOutputStream out = new ObjectOutputStream(
+								so.getOutputStream());
+						out.writeUTF(fi.getName());
+						FileInputStream in = new FileInputStream(fi);
+						byte[] b = new byte[8192];
+						while (true) {
+							int l = in.read(b);
+							if (l == -1)
+								break;
+							out.write(b, 0, l);
+						}
+						out.close();
+						so.close();
+						in.close();
+						System.out.println("Feito!!");
+					} catch (UnknownHostException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					break;
 				}
 				break;
 			case 4:
@@ -230,7 +315,7 @@ public class MainProjeto {
 				System.out.println("Digite a opção desejada: ");
 				op4 = io.nextInt();
 				switch (op4) {
-				case 1:
+				case 1://Adicionar venda 
 					String put,
 					hyu,
 					iua;
@@ -253,8 +338,9 @@ public class MainProjeto {
 					qtde = ven1.nextDouble();
 					Vendas vil = new Vendas(eqp, vend, qtde, clien);
 					ven.adicionarVenda(vil);
+					equi.removerPeloNumSerie(iua);
 					break;
-				case 2:
+				case 2://Pesquisar compra
 					Scanner ven2 = new Scanner(System.in);
 					String kj,
 					ki;
@@ -266,7 +352,7 @@ public class MainProjeto {
 					ki = ven2.nextLine();
 					ven.pesquisarCompraDoCliente(kj, ki);
 					break;
-				case 3:
+				case 3://Pesquisar venda
 					Scanner ven3 = new Scanner(System.in);
 					String ke,
 					ko;
@@ -278,7 +364,7 @@ public class MainProjeto {
 					ko = ven3.nextLine();
 					ven.pesquisarVendaDoVendedor(ke, ko);
 					break;
-				case 4:
+				case 4://Remover compra
 					Scanner ven4 = new Scanner(System.in);
 					String kp,
 					kl;
@@ -290,7 +376,7 @@ public class MainProjeto {
 					kl = ven4.nextLine();
 					ven.removerCompra(kp, kl);
 					break;
-				case 5:
+				case 5://Remover venda
 					Scanner ven5 = new Scanner(System.in);
 					String kq,
 					kd;
@@ -302,10 +388,34 @@ public class MainProjeto {
 					kd = ven5.nextLine();
 					ven.removerVenda(kq, kd);
 					break;
-				case 6:
+				case 6://Salvar no arquivo 
 					ven.salvarDados();
 					break;
-				case 7:
+				case 7://Salvar backup no servidor 
+					File fi = new File("vendas.dat");
+					try {
+						Socket so = new Socket("10.0.4.223", 1515);
+						ObjectOutputStream out = new ObjectOutputStream(
+								so.getOutputStream());
+						out.writeUTF(fi.getName());
+						FileInputStream in = new FileInputStream(fi);
+						byte[] b = new byte[8192];
+						while (true) {
+							int l = in.read(b);
+							if (l == -1)
+								break;
+							out.write(b, 0, l);
+						}
+						out.close();
+						so.close();
+						in.close();
+						System.out.println("Feito!!");
+					} catch (UnknownHostException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					break;
 				}
 				break;
 			}

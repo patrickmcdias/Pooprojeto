@@ -64,9 +64,9 @@ public class ColecaoEquipamentos {
 
 	/**
 	 * 
-	 * M�todo que faz a pesquisa dentro do ArrayList Equip pelo atributo Modelo
+	 * Método que faz a pesquisa dentro do ArrayList Equip pelo atributo Modelo
 	 * Compara e conta quantos elementos daquele modelo existe. No final da 
-	 * execu��o exibe a quantidade de modelos correspondente ao par�metro passado.
+	 * execução exibe a quantidade de modelos correspondente ao parâmetro passado.
 	 * @param mod
 	 */
 	public void pesquisarPeloModelo(String mod) {
@@ -88,8 +88,8 @@ public class ColecaoEquipamentos {
 
 	/**
 	 * 
-	 * M�todo que remove do ArrayList Equip pelo atributo NumSerie.
-	 * Recebe o n�mero de s�rie que deseja remover do arraylist, e remove do array.
+	 * Método que remove do ArrayList Equip pelo atributo NumSerie.
+	 * Recebe o número de série que deseja remover do arraylist, e remove do array.
 	 * @param n
 	 */
 	public void removerPeloNumSerie(String n) {
@@ -111,8 +111,8 @@ public class ColecaoEquipamentos {
 
 	/**
 	 * 
-	 * M�todo que remove do ArrayList Equip pelo atributo Modelo.
-	 * Recebe o modelo do equipamento como par�metro e remove do arraylist.
+	 * Método que remove do ArrayList Equip pelo atributo Modelo.
+	 * Recebe o modelo do equipamento como parâmetro e remove do arraylist.
 	 * @param m
 	 */
 	public void removerTodoModelo(String m) {
@@ -133,8 +133,8 @@ public class ColecaoEquipamentos {
 
 	/**
 	 * 
-	 * M�todo que salva o ArrayList Equip em um arquivo.
-	 * Pega o arraylist da cole��o, e salva em um arquivo .dat
+	 * Método que salva o ArrayList Equip em um arquivo.
+	 * Pega o arraylist da coleção, e salva em um arquivo .dat
 	 */
 	public int salvarDados(){
         try{
@@ -149,9 +149,9 @@ public class ColecaoEquipamentos {
 
 	/**
 	 * 
-	 * M�todo que carrega o arquivo com ArrayList Equip.
-	 * Atrav�s do arquivo .dat obtem-se o arraylist correspondente ao 
-	 * arquivo da cole��o. Ao fim da execu��o retorna um arraylist,
+	 * Método que carrega o arquivo com ArrayList Equip.
+	 * Através do arquivo .dat obtem-se o arraylist correspondente ao 
+	 * arquivo da coleção. Ao fim da execução retorna um arraylist,
 	 * do tipo Equipamentos.
 	 * @return Equip
 	 */
